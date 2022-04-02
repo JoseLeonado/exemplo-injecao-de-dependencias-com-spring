@@ -9,25 +9,16 @@ import com.jlcb.notificacao.Notificador;
 @Component
 public class AtivacaoClienteService {
 
-	@Autowired
+	@Autowired(required = false)
 	private Notificador notificador;
-
-//	public AtivacaoClienteService() {
-//	}
-//	
-//	@Autowired /* essa é a melhor opção */
-//	public AtivacaoClienteService(Notificador notificadorEmail) {
-//		this.notificador = notificadorEmail;
-//	}
 
 	public void ativar(Cliente cliente) {
 		cliente.ativar();
-		notificador.notificar(cliente, "Seu cadastro no sistema está ativo!");
+		if (notificador != null) {
+			notificador.notificar(cliente, "Seu cadastro no sistema está ativo!");
+		} else {
+			System.out.println("Não existe notificador, ou seja, o cliente não recebeu o e-mail, mas, foi ativado!");
+		}
 	}
-
-//	@Autowired
-//	public void setNotificador(Notificador notificador) {
-//		this.notificador = notificador;
-//	}
 	
 }
