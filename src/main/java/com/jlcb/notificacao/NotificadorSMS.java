@@ -1,11 +1,10 @@
 package com.jlcb.notificacao;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import com.jlcb.model.Cliente;
 
-@Qualifier("urgente")
+@TipoDoNotificador(NivelUrgencia.URGENTE)
 @Component
 public class NotificadorSMS implements Notificador {
 	

@@ -1,16 +1,17 @@
 package com.jlcb.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import com.jlcb.model.Cliente;
+import com.jlcb.notificacao.NivelUrgencia;
 import com.jlcb.notificacao.Notificador;
+import com.jlcb.notificacao.TipoDoNotificador;
 
 @Component
 public class AtivacaoClienteService {
 
-	@Qualifier("urgente")
+	@TipoDoNotificador(NivelUrgencia.SEM_URGENCIA)
 	@Autowired
 	private Notificador notificador;
 
