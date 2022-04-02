@@ -1,6 +1,7 @@
 package com.jlcb.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import com.jlcb.model.Cliente;
@@ -9,7 +10,8 @@ import com.jlcb.notificacao.Notificador;
 @Component
 public class AtivacaoClienteService {
 
-	@Autowired(required = false)
+	@Qualifier("urgente")
+	@Autowired
 	private Notificador notificador;
 
 	public void ativar(Cliente cliente) {
